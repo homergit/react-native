@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TextInput, View } from "react-native";
 import { styles } from "../styles";
 
-export const Results = ({result, allOperations, currentNumber, hex}) => {
+export const Results = ({result, calculatorActions, currentNumber, hex}) => {
     return (
         <View>
             <Text style={styles.textStyle}>Result:</Text>
@@ -10,10 +10,10 @@ export const Results = ({result, allOperations, currentNumber, hex}) => {
                 style={styles.inputStyle}
                 value={result}
             />
-            <Text style={styles.textStyle}>All operations:</Text>
+            <Text style={styles.textStyle}>All actions:</Text>
             <TextInput
                 style={styles.inputStyle}
-                value={allOperations}
+                value={calculatorActions}
             />
             <Text style={styles.textStyle}>Current number:</Text>
             <TextInput

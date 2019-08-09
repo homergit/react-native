@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { styles } from "./styles";
 
-import { OperationButtons } from './components/operation-buttons.component'
+import { ActionButtons } from './components/action-buttons.component'
 import { ControlButtons } from './components/control-buttons.component';
 import { Results } from './components/results.component';
-import { ValueButtons } from './components/value-buttons.component'
-import { convertOperations } from './utility';
+import { ButtonsView } from './components/value-buttons.component'
+import { changeCalculatorAction } from './utility';
 
 const initState = {
   result: 0,
-  allOperations: [],
+  calculatorActions: [],
   currentNumber: 0,
   hex: false
 };
 
 export default App = () => {
   const [result, setResult] = useState(initState.result);
-  const [allOperations, setAllOperations] = useState(initState.allOperations);
+  const [calculatorActions, setAllActions] = useState(initState.calculatorActions);
   const [currentNumber, setCurrentNumber] = useState(initState.currentNumber);
   const [hex, setHex] = useState(initState.hex);
 
@@ -38,31 +38,31 @@ export default App = () => {
   };
 
   const onOperationPress = (action) => {
-    let newOperations = [];
+    let newActions = [];
 
     if (result && !currentNumber) {
-      newOperations = [{
+      newActions = [{
         hex: hex,
         value: hex ? result.replace('0x', ''): result,
         action
       }];
-    } else if(result && !!allOperations.length && currentNumber) {
-      newOperations.push({
+    } else if(result && calculatorActions.length && currentNumber) {
+      newActions.push({
         hex: hex,
         value: currentNumber,
         action
       });
       setResult(initState.result);
     } else {
-      newOperations = [...allOperations];
-      newOperations.push({
+      newActions = [...calculatorActions];
+      newActions.push({
         hex: hex,
         value: currentNumber,
         action
       });
     }
 
-    setAllOperations(newOperations);
+    setAllActions(newActions);
     setCurrentNumber(initState.currentNumber);
   };
 
@@ -73,23 +73,23 @@ export default App = () => {
 
   const clear = () => {
     setResult(initState.result);
-    setAllOperations(initState.allOperations);
+    setAllActions(initState.calculatorActions);
     setCurrentNumber(initState.currentNumber);
   };
 
   const calculate = () => {
-    const newOperations = [ ...allOperations ];
+    const newActions = [ ...calculatorActions ];
     if (!currentNumber) return;
 
-    newOperations.push({
+    newActions.push({
       hex: hex,
       value: currentNumber
     });
-    setAllOperations(newOperations);
+    setAllActions(newActions);
 
     const newResult = hex
-        ? `0x${eval(convertOperations(newOperations)).toString(16).toUpperCase()}`
-        : eval(convertOperations(newOperations)).toString();
+        ? `0x${eval(changeCalculatorAction(newActions)).toString(16).toUpperCase()}`
+        : eval(changeCalculatorAction(newActions)).toString();
 
     setCurrentNumber(initState.currentNumber);
     setResult(newResult);
@@ -107,7 +107,7 @@ export default App = () => {
         <Results
             hex={hex}
             result={result.toString()}
-            allOperations={!!allOperations.length ? convertOperations(allOperations) : ''}
+            calculatorActions={calculatorActions.length ? changeCalculatorAction(calculatorActions) : ''}
             currentNumber={currentNumber.toString()}
         />
         <ControlButtons
@@ -115,10 +115,10 @@ export default App = () => {
             switchHex={(val) => switchHandler(val)}
             onPress={(control) => onControlPress(control)}
         />
-        <OperationButtons
+        <ActionButtons
             onPress={(action) => onOperationPress(action)}
         />
-        <ValueButtons
+        <ButtonsView
             hex={hex}
             onPress={(value) => onValuePress(value)}
         />

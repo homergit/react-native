@@ -7,20 +7,20 @@ export const buttonTypes = {
     },
     control: {
         style: {
-            backgroundColor: '#83CBFF',
+            backgroundColor: '#9dcaff',
             marginRight: 10
         },
         canDisable: false
     },
-    operation: {
+    action: {
         style: {
-            backgroundColor: '#FFF9C0',
+            backgroundColor: '#feff8a',
         },
         canDisable: false
     }
 };
 
-export const valueButtons = [
+export const buttonsView = [
     [
         {
         title: '1',
@@ -95,22 +95,22 @@ export const valueButtons = [
     ]
 ];
 
-export const operationButtons = [
+export const actionButtons = [
     {
         title: '+',
-        type: buttonTypes.operation,
+        type: buttonTypes.action,
     },
     {
         title: '-',
-        type: buttonTypes.operation,
+        type: buttonTypes.action,
     },
     {
         title: '*',
-        type: buttonTypes.operation,
+        type: buttonTypes.action,
     },
     {
         title: '/',
-        type: buttonTypes.operation,
+        type: buttonTypes.action,
     },
 ];
 

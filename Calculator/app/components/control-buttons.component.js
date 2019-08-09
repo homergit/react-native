@@ -13,14 +13,14 @@ export const ControlButtons = ({hex, switchHex, onPress}) => {
             }}>
                 <View style={styles.switchStyle}>
                     <Text>
-                        Dec
+                        Dec.
                     </Text>
                     <Switch
                         value={hex}
                         onValueChange={(val) => switchHex(val)}
                     />
                     <Text>
-                        Hex
+                        Hex.
                     </Text>
                 </View>
                 <View style={styles.controlsContainer}>

@@ -1,14 +1,14 @@
 import React from "react";
 import { View } from "react-native";
 import { styles } from "../styles";
-import { valueButtons } from "../constants/buttons";
+import { buttonsView } from "../constants/buttons";
 import { CalcBtn } from "./calc-btn.component";
 
-export const ValueButtons = ({onPress, hex}) => {
+export const ButtonsView = ({onPress, hex}) => {
     return (
         <>
             {
-                valueButtons.map((row, id) => {
+                buttonsView.map((row, id) => {
                     return (
                         <View key={id} style={styles.rowButtonContainer}>
                             {

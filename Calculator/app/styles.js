@@ -4,9 +4,9 @@ export const colors = {
     RED: 'red',
     BLACK: 'black',
     GREY: 'grey',
-    CONTAINER_MAIN: '#ecf0f1',
-    INPUT_BACKGROUND: '#E6F6FF',
-    BUTTON_BG: '#FBFFF3'
+    CONTAINER_MAIN: '#f1e2c1',
+    INPUT_BACKGROUND: '#c9ffbc',
+    BUTTON_BG: '#cde0ff'
 };
 
 export const styles = StyleSheet.create({
@@ -16,14 +16,14 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.CONTAINER_MAIN
     },
     textStyle: {
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: 'bold',
         lineHeight: 20,
         marginLeft: 5
     },
     inputStyle: {
         backgroundColor: colors.INPUT_BACKGROUND,
-        fontSize: 16,
+        fontSize: 18,
         paddingVertical: 1,
         paddingHorizontal: 5
     },
